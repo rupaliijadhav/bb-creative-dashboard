@@ -35,6 +35,24 @@ bb-creative-dashboard/
 
 ---
 
+## MCP Server Setup
+
+This project connects to Google Ads via the `@hapotech/google-ads-mcp` MCP server. Configuration lives in `.mcp.json` at the repo root.
+
+### Required credentials
+
+| Variable | Where to get it |
+|----------|----------------|
+| `GOOGLE_ADS_CLIENT_ID` | Google Cloud Console → OAuth 2.0 client |
+| `GOOGLE_ADS_CLIENT_SECRET` | Google Cloud Console → OAuth 2.0 client |
+| `GOOGLE_ADS_REFRESH_TOKEN` | Run OAuth flow with your client credentials |
+| `GOOGLE_ADS_DEVELOPER_TOKEN` | Google Ads UI → Tools → API Center |
+| `GOOGLE_ADS_LOGIN_CUSTOMER_ID` | Your top-level MCC account ID (digits only, no dashes) |
+
+Fill in the placeholder values in `.mcp.json` — never commit real credentials to version control. To use real credentials locally, copy `.mcp.json` to `.mcp.local.json` (gitignored) and fill in the values there.
+
+---
+
 ## Tech Stack
 
 - **Pure HTML/CSS/JS** — no build step, no package manager, no framework
