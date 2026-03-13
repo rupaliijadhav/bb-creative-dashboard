@@ -6,6 +6,7 @@
 <title>BB · Google Creative Dashboard</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Clash+Display:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
 <style>
 :root{
   --bg:#05080e;--s0:#080d16;--s1:#0c1220;--s2:#10182a;--s3:#162035;
@@ -158,60 +159,111 @@ tbody tr:hover td{background:rgba(0,217,245,.02);}
 /* ══════════════════════════════════════
    MOBILE RESPONSIVE — phones & tablets
    ══════════════════════════════════════ */
+/* ═══════════════════════ DOWNLOAD BTN ═══════════════════════ */
+.dl-btn{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:5px 11px;border-radius:8px;font-size:10px;font-family:var(--dm);
+  background:rgba(0,217,245,.07);border:1px solid rgba(0,217,245,.2);
+  color:var(--cy);cursor:pointer;transition:all .18s;white-space:nowrap;
+  font-weight:500;
+}
+.dl-btn:hover{background:rgba(0,217,245,.15);box-shadow:0 0 10px rgba(0,217,245,.15);}
+.dl-btn svg{flex-shrink:0;}
+
+/* ═══════════════════════ CREATIVE LINK ICON ═══════════════════════ */
+.clink{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:16px;height:16px;border-radius:4px;flex-shrink:0;
+  color:var(--mu);transition:color .15s,background .15s;
+  text-decoration:none;margin-left:4px;vertical-align:middle;
+}
+.clink:hover{color:var(--cy);background:rgba(0,217,245,.1);}
+.name-cell{display:flex;align-items:center;gap:0;}
+
+/* ═══════════════════════ MOBILE RESPONSIVE ═══════════════════════ */
 @media(max-width:600px){
   /* Shell padding */
-  .shell{padding:16px 14px 40px;}
+  .shell{padding:12px 12px 40px;}
 
   /* Header */
-  .hdr{flex-direction:column;gap:10px;margin-bottom:18px;}
-  .hdr-icon{width:38px;height:38px;font-size:16px;}
-  .hdr-title{font-size:17px;}
+  .hdr{flex-direction:column;gap:10px;margin-bottom:16px;}
+  .hdr-l{gap:10px;}
+  .hdr-icon{width:36px;height:36px;font-size:15px;}
+  .hdr-title{font-size:16px;}
   .hdr-sub{font-size:9px;}
-  .status-pill{font-size:9px;padding:5px 11px;}
+  .status-pill{font-size:9px;padding:4px 10px;}
+  .sync-wrap{flex-direction:column;align-items:flex-start;gap:5px;}
+  .sync-btn{font-size:10px;padding:6px 12px;}
 
-  /* Filter bar — stack vertically */
+  /* Filter bar — stack vertically, 2-col grid for selects */
   .fbar{
+    position:relative;top:auto;
     flex-direction:column;align-items:stretch;
-    padding:12px 14px;gap:8px;
+    padding:10px 12px;gap:6px;
   }
+  .fbar-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
   .flabel{display:none;}
   .vdiv{display:none;}
   .sel-wrap{width:100%;}
-  select{width:100%;min-width:unset;font-size:12px;padding:10px 28px 10px 12px;}
+  select{width:100%;min-width:unset;font-size:11px;padding:9px 24px 9px 10px;}
   .rbtn{width:100%;justify-content:center;padding:10px;}
 
-  /* KPI strip — 2 cols on phone */
-  .kstrip{grid-template-columns:1fr 1fr;gap:10px;}
-  .kval{font-size:22px;}
-  .kcard{padding:14px 14px 12px;}
-  .kicon{font-size:16px;margin-bottom:6px;}
+  /* KPI strip — 2 cols */
+  .kstrip{grid-template-columns:1fr 1fr;gap:8px;}
+  .kval{font-size:20px;}
+  .kcard{padding:12px 12px 10px;}
+  .kicon{font-size:14px;margin-bottom:5px;}
+  .klabel{font-size:8.5px;}
 
-  /* All chart grids → single column */
-  .g1,.g2,.g3,.g2b{grid-template-columns:1fr;gap:12px;}
-
-  /* Chart cards */
-  .card{padding:14px 14px;}
+  /* Charts — single column */
+  .g1,.g2,.g3,.g2b{grid-template-columns:1fr;gap:10px;}
+  .card{padding:12px 12px;}
   .ch{flex-direction:column;gap:6px;}
   .ct{font-size:12px;}
-  .cs{font-size:9.5px;}
-  .leg{gap:8px;}
-  .li{font-size:9.5px;}
+  .cs{font-size:9px;}
+  .leg{gap:6px;flex-wrap:wrap;}
+  .li{font-size:9px;}
 
-  /* Table — horizontal scroll with bigger touch targets */
+  /* Chart header with download btn */
+  .ch-right{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+  .dl-btn{font-size:9px;padding:4px 8px;}
+
+  /* Tables */
   .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;}
-  table{font-size:10px;min-width:560px;}
-  th{padding:6px 8px;font-size:8.5px;}
-  td{padding:7px 8px;}
+  .wow-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+  table{font-size:10px;}
+  th{padding:5px 7px;font-size:8px;}
+  td{padding:6px 7px;}
+
+  /* Table controls — stack */
+  .wow-controls{flex-wrap:wrap;gap:6px;}
+  .metric-tabs{flex-wrap:wrap;gap:4px;}
+  .mtab{font-size:9px;padding:5px 10px;}
+
+  /* Rank table section */
+  .rank-section .ch{flex-direction:column;}
+
+  /* Download buttons in card headers */
+  .card .ch{position:relative;}
 }
 
 /* Tablet tweaks */
 @media(min-width:601px) and (max-width:900px){
-  .shell{padding:20px 20px 48px;}
+  .shell{padding:18px 18px 48px;}
   .fbar{flex-wrap:wrap;gap:8px;}
   .vdiv{display:none;}
-  select{min-width:130px;}
+  select{min-width:120px;}
   .kstrip{grid-template-columns:repeat(3,1fr);}
+  .g1,.g2,.g2b{grid-template-columns:1fr;}
+  .g3{grid-template-columns:1fr 1fr;}
 }
+
+/* Small tablet */
+@media(min-width:901px) and (max-width:1100px){
+  .kstrip{grid-template-columns:repeat(3,1fr);}
+  .g1,.g2,.g3,.g2b{grid-template-columns:1fr;}
+}
+
 
 .sync-wrap{display:flex;align-items:center;gap:8px;}
 .sync-btn{display:flex;align-items:center;gap:6px;padding:7px 16px;background:rgba(23,212,160,.1);border:1px solid rgba(23,212,160,.35);color:var(--gn);font-family:var(--dm);font-size:11px;border-radius:8px;cursor:pointer;transition:all .2s;white-space:nowrap;font-weight:500;}
@@ -419,47 +471,56 @@ th.sortable.asc,th.sortable.desc{color:var(--cy);background:rgba(0,217,245,.06);
 
 <!-- Row 1: Spend trend + Category donut -->
 <div class="g2">
-  <div class="card">
+  <div class="card" id="card-trend">
     <div class="ch">
       <div><div class="ct">Weekly Spend Trend</div><div class="cs">Cost (₹) from Unique tab · split by category</div></div>
-      <div class="leg">
-        <div class="li"><div class="ld" style="background:var(--cy)"></div>Hair</div>
-        <div class="li"><div class="ld" style="background:var(--pu)"></div>Body</div>
-        <div class="li"><div class="ld" style="background:var(--am)"></div>Nutrition</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-left:auto;">
+        <div class="leg">
+          <div class="li"><div class="ld" style="background:var(--cy)"></div>Hair</div>
+          <div class="li"><div class="ld" style="background:var(--pu)"></div>Body</div>
+          <div class="li"><div class="ld" style="background:var(--am)"></div>Nutrition</div>
+        </div>
       </div>
     </div>
     <canvas id="cTrend" height="148"></canvas>
   </div>
-  <div class="card">
-    <div class="ch"><div><div class="ct">Spend by Category</div><div class="cs">Share of filtered total</div></div></div>
+  <div class="card" id="card-catdon">
+    <div class="ch">
+      <div><div class="ct">Spend by Category</div><div class="cs">Share of filtered total</div></div>
+    </div>
     <canvas id="cCatDon" height="148"></canvas>
   </div>
 </div>
 
 <!-- Row 2: Campaign source + Source split -->
 <div class="g2">
-  <div class="card">
+  <div class="card" id="card-camp">
     <div class="ch">
       <div><div class="ct">Campaign Spend</div><div class="cs">Performance Max vs Demand Gen (Weekly tab)</div></div>
-      <div class="leg">
-        <div class="li"><div class="ld" style="background:var(--gn)"></div>Perf Max</div>
-        <div class="li"><div class="ld" style="background:var(--am)"></div>Demand Gen</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-left:auto;">
+        <div class="leg">
+          <div class="li"><div class="ld" style="background:var(--gn)"></div>Perf Max</div>
+          <div class="li"><div class="ld" style="background:var(--am)"></div>Demand Gen</div>
+        </div>
       </div>
     </div>
     <canvas id="cCamp" height="160"></canvas>
   </div>
-  <div class="card">
-    <div class="ch"><div><div class="ct">Int · Inf · AFF</div><div class="cs">Source split by spend</div></div></div>
+  <div class="card" id="card-src">
+    <div class="ch">
+      <div><div class="ct">Int · Inf · AFF</div><div class="cs">Source split by spend</div></div>
+    </div>
     <canvas id="cSrc" height="160"></canvas>
   </div>
 </div>
 
 <!-- Row 3: Table + Products -->
 <div class="g2b">
-  <div class="card">
+  <div class="card" id="card-tbl">
     <div class="ch" style="align-items:center;">
       <div><div class="ct">Top Creatives</div><div class="cs" id="tblCount">Filtered · click column headers to sort</div></div>
       <div style="display:flex;align-items:center;gap:8px;margin-left:auto;">
+        <button class="dl-btn" onclick="downloadCSV('tbl')"><svg width="11" height="11" viewBox="0 0 11 11"><path d="M5.5 1v7M2 8.5l3.5 2 3.5-2M1 10h9" stroke="currentColor" fill="none" stroke-width="1.4" stroke-linecap="round"/></svg>CSV</button>
         <span style="font-size:10px;color:var(--mu);">Show</span>
         <div class="sel-wrap">
           <select id="tblRows" style="min-width:80px;">
@@ -477,13 +538,15 @@ th.sortable.asc,th.sortable.desc{color:var(--cy);background:rgba(0,217,245,.06);
       <tbody id="tBody"></tbody></table>
     </div>
   </div>
-  <div class="card">
-    <div class="ch"><div><div class="ct">Top Products by Spend</div><div class="cs">Filtered · total cost</div></div></div>
+  <div class="card" id="card-prods">
+    <div class="ch">
+      <div><div class="ct">Top Products by Spend</div><div class="cs">Filtered · total cost</div></div>
+    </div>
     <canvas id="cProds" height="220"></canvas>
   </div>
 </div>
 
-<div class="card wow-section" style="margin-top:20px;">
+<div class="card wow-section" id="card-wow" style="margin-top:20px;">
   <div class="ch" style="margin-bottom:10px;">
     <div>
       <div class="ct">Creative Performance · Week on Week</div>
@@ -494,6 +557,7 @@ th.sortable.asc,th.sortable.desc{color:var(--cy);background:rgba(0,217,245,.06);
       <button class="mtab" data-m="conv">Conversions</button>
       <button class="mtab" data-m="cpa">CPA (₹)</button>
     </div>
+    <button class="dl-btn" onclick="downloadCSV('wow')"><svg width="11" height="11" viewBox="0 0 11 11"><path d="M5.5 1v7M2 8.5l3.5 2 3.5-2M1 10h9" stroke="currentColor" fill="none" stroke-width="1.4" stroke-linecap="round"/></svg>CSV</button>
   </div>
   <div class="wow-controls">
     <span class="flabel">Sort by</span>
@@ -531,10 +595,14 @@ th.sortable.asc,th.sortable.desc{color:var(--cy);background:rgba(0,217,245,.06);
 </div>
 
 <!-- ══════════════════ RANK PERFORMANCE TABLE ══════════════════ -->
-<div class="card rank-section" style="margin-top:20px;">
-  <div class="ct">Creative Rank · Week on Week by Product</div>
-  <div class="cs">Ranked by <strong style="color:var(--gn)">conversions</strong> within each product group · week by week · click column headers to sort</div>
-
+<div class="card rank-section" id="card-rank" style="margin-top:20px;">
+  <div class="ch" style="margin-bottom:6px;">
+    <div>
+      <div class="ct">Creative Rank · Week on Week by Product</div>
+      <div class="cs">Ranked by <strong style="color:var(--gn)">conversions</strong> within each product group · week by week · click column headers to sort</div>
+    </div>
+    <button class="dl-btn" onclick="downloadCSV('rank')"><svg width="11" height="11" viewBox="0 0 11 11"><path d="M5.5 1v7M2 8.5l3.5 2 3.5-2M1 10h9" stroke="currentColor" fill="none" stroke-width="1.4" stroke-linecap="round"/></svg>CSV</button>
+  </div>
   <div class="rank-controls">
     <div class="rank-tabs" id="rankProdTabs"></div>
     <select id="rankRows" style="margin-left:auto;">
@@ -587,6 +655,83 @@ addOpts('fName', D.names);
 // ════════════════════════════════════════════════════════════════
 const charts={};
 function kill(id){if(charts[id]){charts[id].destroy();delete charts[id];}}
+
+// ─── CSV DOWNLOAD ───────────────────────────────────────────────
+function escCSV(v){ const s=String(v==null?'':v); return s.includes(',')||s.includes('"')||s.includes('\n')?'"'+s.replace(/"/g,'""')+'"':s; }
+function triggerCSV(rows, filename){
+  const csv = rows.map(r=>r.map(escCSV).join(',')).join('\r\n');
+  const blob = new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename+'_'+new Date().toISOString().slice(0,10)+'.csv';
+  a.click(); URL.revokeObjectURL(a.href);
+}
+
+function downloadCSV(which){
+  const f = getF();
+  const date = new Date().toISOString().slice(0,10);
+
+  if(which==='tbl'){
+    const allCrs = filtCR(f).map(c=>{
+      const spend=sumWk(c.cw,f.week), conv=c.cvw?c.cvw.reduce((a,b)=>a+b,0):(c.tcv||0);
+      return {...c, spend, conv, cac: conv>0?spend/conv:0};
+    });
+    const textCols=new Set(['name','cat','prod','src']);
+    const sorted=applySort(allCrs,tblSort.col,tblSort.dir,textCols.has(tblSort.col));
+    const limit=tblRows===0?sorted.length:tblRows;
+    const rows=[['#','Name','Category','Product','Source','Format','Spend (INR)','Conversions','CAC (INR)','Creative URL']];
+    sorted.slice(0,limit).forEach((c,i)=>{
+      rows.push([i+1,c.name||'',c.cat||'',c.prod||'',c.src||'',c.at||'',Math.round(c.spend),Math.round(c.conv),c.cac>0?Math.round(c.cac):'',c.asset||'']);
+    });
+    triggerCSV(rows,'top_creatives');
+
+  } else if(which==='wow'){
+    const crs=filtCR(f), nw=D.wl.length;
+    const rawRows=crs.map(c=>{
+      const vals=D.wl.map((_,wi)=>getWkMetric(c,wi,wowMetric));
+      const total=wowMetric==='cpa'?(()=>{const tc=c.cw.reduce((a,b)=>a+b,0),tv=c.cvw.reduce((a,b)=>a+b,0);return tc>0&&tv>0?tc/tv:0;})():vals.reduce((a,b)=>a+b,0);
+      return {c,vals,total,lastVal:vals[nw-1],wow:wowChg(vals[nw-1],vals[nw-2])};
+    });
+    const sorted=wowSortRows(rawRows);
+    const limit=wowRows===0?sorted.length:wowRows;
+    const metricLabel={'spend':'Spend (INR)','conv':'Conversions','cpa':'CPA (INR)'}[wowMetric]||wowMetric;
+    const header=['#','Name','Category','Product','Source','Format',...D.wl.map(wl=>wl+' '+metricLabel),'Total '+metricLabel,'Creative URL'];
+    const rows=[header];
+    sorted.slice(0,limit).forEach((r,i)=>{
+      const {c,vals,total}=r;
+      const wkVals=vals.map(v=>wowMetric==='cpa'?(v>0?+v.toFixed(0):0):Math.round(v));
+      const tot=wowMetric==='cpa'?(total>0?+total.toFixed(0):0):Math.round(total);
+      rows.push([i+1,c.name||'',c.cat||'',c.prod||'',c.src||'',c.at||'',...wkVals,tot,c.asset||'']);
+    });
+    triggerCSV(rows,'wow_performance');
+
+  } else if(which==='rank'){
+    const crs=filtCR(f), nw=D.wl.length;
+    const filtered=rankProd==='All'?crs:crs.filter(c=>c.prod===rankProd);
+    const byProd={};
+    filtered.forEach(c=>{ const p=c.prod||'Unknown'; if(!byProd[p])byProd[p]=[]; byProd[p].push(c); });
+    const rankMap={};
+    filtered.forEach(c=>{ rankMap[c.asset]=new Array(nw).fill(null); });
+    Object.values(byProd).forEach(group=>{
+      for(let wi=0;wi<nw;wi++){
+        const active=group.filter(c=>(c.cvw[wi]||0)>0);
+        active.sort((a,b)=>(b.cvw[wi]||0)-(a.cvw[wi]||0));
+        active.forEach((c,idx)=>{ rankMap[c.asset][wi]=idx+1; });
+      }
+    });
+    const withTotals=filtered.map(c=>({...c,total:c.cvw?c.cvw.reduce((a,b)=>a+b,0):0,spend:c.cw?c.cw.reduce((a,b)=>a+b,0):0}));
+    const textCols2=new Set(['name','prod']);
+    const sorted2=applySort(withTotals,rankSort.col,rankSort.dir,textCols2.has(rankSort.col));
+    const limit=rankRows===0?sorted2.length:rankRows;
+    const header=['#','Name','Product','Source','Format',...D.wl.map(wl=>wl+' Rank'),'Total Conv.','Total Spend (INR)','Creative URL'];
+    const rows=[header];
+    sorted2.slice(0,limit).forEach((c,i)=>{
+      const ranks=(rankMap[c.asset]||[]).map(r=>r===null?'':r);
+      rows.push([i+1,c.name||'',c.prod||'',c.src||'',c.at||'',...ranks,Math.round(c.total),Math.round(c.spend),c.asset||'']);
+    });
+    triggerCSV(rows,'rank_table');
+  }
+}
 
 function fmt(n){
   if(n>=10000000)return'₹'+(n/10000000).toFixed(2)+'Cr';
@@ -911,7 +1056,7 @@ function renderTable(f){
   document.getElementById('tBody').innerHTML=crs.map((c,i)=>`
     <tr>
       <td style="color:var(--mu)">${i+1}</td>
-      <td style="color:#fff;font-weight:500;max-width:130px;overflow:hidden;text-overflow:ellipsis">${c.name||'—'}</td>
+      <td style="color:#fff;font-weight:500;max-width:130px;overflow:hidden;text-overflow:ellipsis"><div class="name-cell">${c.name||'—'}${c.asset?`<a class="clink" href="${c.asset}" target="_blank" title="View creative"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7"/><path d="M8 1h3v3"/><line x1="11" y1="1" x2="5" y2="7"/></svg></a>`:''}</div></td>
       <td><span class="tag ${catCls[c.cat]||''}">${c.cat}</span></td>
       <td style="color:var(--mu);max-width:90px;overflow:hidden;text-overflow:ellipsis">${c.prod}</td>
       <td><span class="tag ${srcCls[c.src]||''}">${c.src}</span></td>
@@ -1069,7 +1214,7 @@ function renderRank(f) {
     rows += `<tr>
       <td class="rs-col rs-0" style="color:var(--mu);font-size:10px">${i+1}</td>
       <td class="rs-col rs-1">
-        <div class="rank-name">${c.name||'<span style="color:var(--mu);font-style:italic">Unnamed</span>'}</div>
+        <div class="name-cell"><div class="rank-name">${c.name||'<span style="color:var(--mu);font-style:italic">Unnamed</span>'}</div>${c.asset?`<a class="clink" href="${c.asset}" target="_blank" title="View creative"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7"/><path d="M8 1h3v3"/><line x1="11" y1="1" x2="5" y2="7"/></svg></a>`:''}</div>
         <div class="rank-meta">${typeMap[c.at]||c.at||''} · ${c.src} &nbsp;<span class="tag ${catCls[c.cat]||''}" style="font-size:8px;padding:1px 5px">${c.cat}</span></div>
       </td>
       <td class="rs-col rs-2" style="font-size:11px;color:var(--mu)">${prod}</td>
@@ -1192,7 +1337,7 @@ function renderWow(f){
     return `<tr>
       <td class="s-col s-col-0" style="color:var(--mu);font-size:10px">${i+1}</td>
       <td class="s-col s-col-1">
-        <div class="wow-name">${c.name||'<span style="color:var(--mu);font-style:italic">Unnamed</span>'}</div>
+        <div class="name-cell"><div class="wow-name">${c.name||'<span style="color:var(--mu);font-style:italic">Unnamed</span>'}</div>${c.asset?`<a class="clink" href="${c.asset}" target="_blank" title="View creative"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2H2a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V7"/><path d="M8 1h3v3"/><line x1="11" y1="1" x2="5" y2="7"/></svg></a>`:''}</div>
         <div class="wow-meta">${({'Vertical YouTube video':'Vert. YT','Horizontal YouTube video':'Horiz. YT','Square image':'Square','Horizontal image':'Horiz. Img','Vertical image':'Vert. Img'}[c.at])||c.at||''} · ${c.src}</div>
       </td>
       <td class="s-col s-col-2"><span class="tag ${catCls[c.cat]||''}">${c.cat}</span></td>
