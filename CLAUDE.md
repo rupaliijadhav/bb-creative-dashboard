@@ -4,6 +4,17 @@
 
 This repository contains the **BB Google Creative Dashboard**, a single-page analytics interface for monitoring and optimizing Google Ads creative performance. The dashboard visualizes key ad metrics (CTR, ROAS, CPA, impressions, spend) across campaigns, ad groups, and individual creatives.
 
+## Account Context
+
+Fill these in before starting a session:
+
+- **Business type:** [e.g. ecommerce, lead gen, SaaS]
+- **Monthly budget:** [e.g. $5,000]
+- **Target CPA:** [e.g. $25]
+- **Target ROAS:** [e.g. 4×]
+
+---
+
 ## Agent Purpose
 
 This agent assists with **Google Ads creative optimization**: analyzing performance data surfaced in the dashboard, identifying underperforming creatives, recommending copy/asset changes, and implementing dashboard UI improvements to better support optimization workflows.
@@ -132,14 +143,40 @@ recommended replacement copy.
 
 ---
 
+## Slash Commands
+
+| Command | Action |
+|---------|--------|
+| `/audit` | Full account health check across all campaigns |
+| `/waste` | Find budget-wasting keywords (high spend, zero conversions) |
+| `/report` | Weekly performance summary (CTR, CPA, ROAS, spend vs budget) |
+| `/negatives` | Build negative keyword list from search term report |
+| `/copy` | Generate new ad copy variants for a given ad group |
+
+---
+
+## Output Format
+
+Every agent response must follow this structure:
+
+1. **Summary** — one-sentence status
+2. **Key findings** — bulleted, metric-backed observations
+3. **Recommended actions** — specific, prioritized next steps
+4. **What needs your approval** — list anything requiring human sign-off before execution
+
+---
+
 ## Agent Behavior Rules
 
-1. **Never modify** `BB_Dashboard_FINAL.html` or `BB_Dashboard_FINAL (1).html`
-2. **Do not introduce** external dependencies beyond Chart.js and Google Fonts (already loaded via CDN)
-3. **Validate metric logic** — optimization recommendations must cite the metric thresholds defined above or provide a source
-4. **Security** — this dashboard is client-side only; do not add form submissions, fetch calls to unauthenticated endpoints, or eval() usage
-5. **Commit and push** all changes to the active feature branch (never push directly to `main` or `master` without review)
-6. **One concern per commit** — keep commits focused; separate data changes from UI changes
+1. **Never pause campaigns** without explicit user confirmation
+2. **Flag spend deviations > 20%** above or below expected pacing immediately
+3. **Suggest before executing** — always present recommendations and wait for approval before making changes
+4. **Never modify** `BB_Dashboard_FINAL.html` or `BB_Dashboard_FINAL (1).html`
+5. **Do not introduce** external dependencies beyond Chart.js and Google Fonts (already loaded via CDN)
+6. **Validate metric logic** — optimization recommendations must cite the metric thresholds defined above or provide a source
+7. **Security** — this dashboard is client-side only; do not add form submissions, fetch calls to unauthenticated endpoints, or eval() usage
+8. **Commit and push** all changes to the active feature branch (never push directly to `main` or `master` without review)
+9. **One concern per commit** — keep commits focused; separate data changes from UI changes
 
 ---
 
