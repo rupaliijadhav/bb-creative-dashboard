@@ -361,12 +361,12 @@ tbody tr:hover td{background:rgba(0,217,245,.02);}
 .wk-bar-fill{height:100%;border-radius:1px;background:linear-gradient(90deg,var(--cy),var(--pu));transition:width .3s;}
 
 /* ═══════════════════════ EXCEL-STYLE SORT HEADERS ═══════════════════════ */
-th.sortable{cursor:pointer;user-select:none;white-space:nowrap;position:relative;padding-right:18px !important;}
+th.sortable{cursor:pointer;user-select:none;white-space:nowrap;position:relative;padding-right:14px !important;}
 th.sortable:hover{color:var(--cy);background:rgba(0,217,245,.05);}
 th.sortable::after{
   content:'⇅';
-  position:absolute;right:5px;top:50%;transform:translateY(-50%);
-  font-size:9px;opacity:.3;
+  position:absolute;right:4px;top:6px;
+  font-size:8px;opacity:.3;line-height:1;
 }
 th.sortable.asc::after{content:'▲';opacity:.9;color:var(--cy);}
 th.sortable.desc::after{content:'▼';opacity:.9;color:var(--cy);}
