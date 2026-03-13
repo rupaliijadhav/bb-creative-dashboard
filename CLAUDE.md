@@ -138,7 +138,7 @@ recommended replacement copy.
 2. **Do not introduce** external dependencies beyond Chart.js and Google Fonts (already loaded via CDN)
 3. **Validate metric logic** — optimization recommendations must cite the metric thresholds defined above or provide a source
 4. **Security** — this dashboard is client-side only; do not add form submissions, fetch calls to unauthenticated endpoints, or eval() usage
-5. **Commit and push** all changes to the active feature branch (never push directly to `main` or `master`)
+5. **Commit and push** all changes to the active feature branch (never push directly to `main` or `master` without review)
 6. **One concern per commit** — keep commits focused; separate data changes from UI changes
 
 ---
